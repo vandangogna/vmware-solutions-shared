@@ -19,19 +19,21 @@ resource "vcd_network_routed" "tutorial_network" {
 
   name         = "Tutorial-Network"
   edge_gateway = module.ibm_vmware_solutions_shared_instance.edge_gateway_name
-  gateway      = "192.168.100.1"
+  gateway      = "192.168.10.1"
 
   interface_type = "distributed"
 
   static_ip_pool {
-    start_address = "192.168.100.5"
-    end_address   = "192.168.100.254"
+    start_address = "192.168.10.5"
+    end_address   = "192.168.10.254"
   }
 
   dns1 = "9.9.9.9"
   dns2 = "1.1.1.1"
 }
 
+
+/* 
 # Create the firewall rule to access the Internet 
 resource "vcd_nsxv_firewall_rule" "rule_internet" {
   edge_gateway = module.ibm_vmware_solutions_shared_instance.edge_gateway_name
@@ -163,3 +165,4 @@ resource "vcd_vapp_vm" "vm_1" {
     is_primary         = true
   }
 }
+ */
